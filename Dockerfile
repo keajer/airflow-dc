@@ -14,8 +14,8 @@ COPY scripts/airflow-webserver.conf /etc/init/
 COPY scripts/boostrap.sh ${AIRFLOW_HOME}/boostrap.sh
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
 
-RUN apt-get install -y openssh-server sudo
-RUN sudo adduser airflow sudo
+# RUN apt-get install -y openssh-server sudo
+# RUN sudo adduser airflow sudo
 
 RUN chown -R airflow: ${AIRFLOW_HOME}
 

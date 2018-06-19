@@ -45,7 +45,7 @@ services:
       - redis
       - airflow_server
   airflow_worker:
-    image: docker.branch.io/airflow-discovery
+    image: keajer/airflow:latest
     environment:
       TYPE: worker
       POSTGRES_HOST: postgres
@@ -55,15 +55,13 @@ services:
     ports:
       - "8793:8793"
       - "4040:4040"
-    # volumes:
-    #   - ./airflow-dags:/usr/local/airflow/dags:ro
     restart: always
     depends_on:
       - postgres
       - redis
       - airflow_server
   airflow_flower:
-    image: docker.branch.io/airflow-discovery
+    image: keajer/airflow:latest
     environment:
       TYPE: flower
       POSTGRES_HOST: postgres
@@ -73,8 +71,6 @@ services:
     ports:
       - "5555:5555"
     restart: always
-    # volumes:
-    #   - ./airflow-dags:/usr/local/airflow/dags:ro
     depends_on:
       - postgres
       - redis
